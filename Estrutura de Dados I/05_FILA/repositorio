@@ -1,0 +1,45 @@
+void busca(Fila *fila_da_Vezes, char *nome){
+    
+    int ver = 0, frente = 0;
+
+    fila *aux = fila_da_Vezes->firts;
+    entran(aux, nome, &frente, &ver);
+    if(ver == 1){
+        printf("%d Na frente do Paciente %s", frente, nome); 
+        return ;
+    }
+
+    aux = urgencia.firts;
+    //entr(aux, nome, &frente);
+    entran(aux, nome, &frente, &ver);
+
+    if(ver == 1){
+        printf("%d Na frente do Paciente %s", frente, nome); 
+        return ;
+    }
+
+    aux = eletivo.firts;
+    entr(aux, nome, &frente, &ver);
+    if(ver == 1){
+        printf("%d Na frente do Paciente %s", frente, nome); 
+    }
+    else{
+        printf("\nNão exite o paciente!");
+    }
+    
+}
+
+
+void entr(fila *aux, char *nome, int *frente, int *verificador = NULL){
+
+    while(aux != NULL){
+        if(strcmp(aux->nome, nome) == 0){
+            if(verificador != NULL){
+                (*verificador) = 1;
+            }
+            return ;
+        }
+        (*frente) += 1;
+        aux = aux->prox;
+    }
+}
